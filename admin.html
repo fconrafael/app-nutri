@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Nutri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "verde-clarinho": '#D5FFEA',
+                        "verde-claro": '#85CFAA',
+                        "verde-escuro": '#41745A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{
+            font-family: "Montserrat", serif;
+        }
+    </style>
+</head>
+
+<body class="p-[20px]">
+    <header class="w-[230px] bg-verde-clarinho p-4 rounded-[10px]">
+        <img src="imgs/nutri-logo.png" alt="Logo Nutri">
+        <nav class="*:block *:leading-[38px] *:px-[10px] *:rounded-[6px] *:text-verde-escuro *:text-[14px]">
+            <a href="admin.html" class="bg-verde-claro font-bold">Dashboard</a>
+            <a href="usuarios.html">Usuários</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="treinos.html">Treinos</a>
+        </nav>
+    </header>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
