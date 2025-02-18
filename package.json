@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "name": "app-nutri",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "devDependencies": {},
+  "scripts": {
+    "api": "npx json-server --watch api.json --port 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fconrafael/app-nutri.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fconrafael/app-nutri/issues"
+  },
+  "homepage": "https://github.com/fconrafael/app-nutri#readme",
+  "description": ""
+}
