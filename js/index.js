@@ -43,20 +43,33 @@ function adicionarUsuario() {
         body: data
     })
     .then(resposta => resposta.json())
-    .then(resposta => {dados = resposta});
+    .then(resposta => {
+        dados = resposta
+    
+    });
+
+
 }
 
 function buscarUsuarios(){
-    // requisição do tipo GET pra buscar os usuarios
+    fetch("http://localhost:8000/usuarios")
+    .then(resposta => resposta.json())
+    .then(resposta => {listarUsuarios(resposta)});
 }
+buscarUsuarios()
 
 function editarUsuario(){
     // requisição do tipo PUT pra buscar os usuarios
 }
 
 function deletarUsuario(id){
-    // requisição do tipo DELETE pra apagar o usuario
+    fetch(`http://localhost:8000/usuarios/${id}`, {
+        method: "DELETE",
+    })
+    .then(resposta => resposta.json())
+    .then(resposta => {alert("Usuario deletado com sucesso")});
 }
+
 
 function listarUsuarios(usuarios){
     let table = document.querySelector("#usuarios");
@@ -70,7 +83,7 @@ function listarUsuarios(usuarios){
                     <button class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">
                         <box-icon type='solid' name='pencil' class="fill-verde-escuro group-hover:fill-verde-claro"></box-icon>
                     </button>
-                    <button class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">
+                    <button onclick="deletarUsuario(${usuario.id})" class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">
                         <box-icon type='solid' name='trash' class="fill-verde-escuro group-hover:fill-verde-claro"></box-icon>
                     </button>
                 </td>
