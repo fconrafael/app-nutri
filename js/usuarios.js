@@ -1,3 +1,5 @@
+let usuarios = [];
+
 function mostrarOverlay() {
     let modalBG = document.querySelector("#overlay");
     modalBG.classList.remove("invisible", "opacity-0");
@@ -53,30 +55,48 @@ function adicionarUsuario(event) {
     // formData.forEach((value, key) => {  //converte em um objeto, pois náo pode ser diretametno transformado em JSON
     //     data[key] = value;
     // });
+    if(usuarios.find(usuario => usuario.email == data.email)){
+        alert("Esté e-mail já está cadastrado");
+        return;
 
+    } 
     fetch("http://localhost:8000/usuarios", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data) // enviar os dados corretamente na requisição POST
+        body: JSON.stringify(data) 
     })
     .then(resposta => resposta.json())
     .then(resposta => {alert("Usuário cadastrado com sucesso")
     })
 }
 
-function buscarUsuarios(){
-    fetch("http://localhost:8000/usuarios")
-    .then(resposta => resposta.json())
-    .then(resposta => {listarUsuarios(resposta)});
+async function buscarUsuarios(){
+    try {
+    let request = await fetch("http://localhost:8000/usuarios")
+    let resposta = await request.json()
+    if (resposta){
+        usuarios = resposta;
+        listarUsuarios(resposta)
+    }
+    } catch (error) {
+        alert(`Falha ao buscar dados: ${error.message}`)
+    }
 }
 buscarUsuarios()
 
-function mostrarSideBarEditar() {
+function mostrarSideBarEditar(id) {
     let modalBG = document.querySelector("#sidebarEditar");
     modalBG.classList.remove("-right-full");
     modalBG.classList.add("right-0");
+    let usuario = usuarios.find(usuario => usuario.id == id);
+    let idValue = document.querySelector("#idEditar");
+    let nomeValue = document.querySelector("#nomeEditar");
+    let emailValue = document.querySelector("#emailEditar");
+    idValue.value = usuario.id;
+    nomeValue.value = usuario.nome;
+    emailValue.value = usuario.email;
     mostrarOverlay()
 }
 function ocultarSideBarEditar() {
@@ -85,14 +105,20 @@ function ocultarSideBarEditar() {
     modalBG.classList.add("-right-full");
 }
 
-function editarUsuario(id){
-    fetch(`http://localhost:8000/usuarios/${id}`)
+function editarUsuario(){
+    let formulario = document.querySelector("#editar");
+    let formData = new FormData(formulario);
+    let data = Object.fromEntries(formData.entries());
+    fetch(`http://localhost:8000/usuarios/${data.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
     .then(resposta => resposta.json())
     .then(resposta => {console.log(resposta);
     });
-
-    document.getElementById("nomeEditar").value = resposta.nome;
-    document.getElementById("emailEditar").value = resposta.email;
 
 }
 
@@ -117,9 +143,9 @@ function listarUsuarios(usuarios){
             <tr>
                 <td class="w-[50px]">${usuario.id}</td>
                 <td class="w-[250px]">${usuario.nome}</td>
-                <td class="w-full">${usuario.email}</td>
+                <td class="w-auto">${usuario.email}</td>
                 <td class="w-[100px] flex gap-3">
-                    <button onclick="editarUsuario('2')" class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">
+                    <button onclick="mostrarSideBarEditar(${usuario.id})" class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">
                         <box-icon type='solid' name='pencil' class="fill-verde-escuro group-hover:fill-verde-claro"></box-icon>
                     </button>
                     <button onclick="deletarUsuario(${usuario.id})" class="w-[36px] h-[36px] p-2 flex justify-center items-center bg-verde-claro rounded-full hover:bg-verde-escuro group duration-200">

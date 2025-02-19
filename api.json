@@ -2,7 +2,7 @@
   "usuarios": [
     {
       "id": 1,
-      "nome": "Rafael",
+      "nome": "Rafael Xavier",
       "email": "rafael@gmail.com"
     },
     {
@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "nome": "Carlos",
-      "email": "carlos@gmail.com"
+      "nome": "Carlos Alves",
+      "email": "carlos.alves@gmail.com"
     },
     {
       "id": 4,
@@ -34,6 +34,14 @@
       "nome": "fs32",
       "email": "teste@gmail.com",
       "id": 12
+    },
+    {
+      "nome": "teste",
+      "email": "rafael@hotmail.com",
+      "id": 13
     }
+  ],
+  "receitas": [
+    
   ]
 }
