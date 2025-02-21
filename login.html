@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Nutri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "verde-clarinho": '#D5FFEA',
+                        "verde-claro": '#85CFAA',
+                        "verde-escuro": '#41745A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Montserrat", serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h-screen flex justify-center items-center">
+        <form class="w-[350px] border p-4 rounded-lg flex flex-col">
+            <div>
+                <img src="imgs/nutri-logo.png" alt="Nutri logo" class="h-[100px] m-auto">
+            </div>
+            <h2 class="font-bold text-verde-escuro text-[22px] text-center mb-6">Seja bem-vindo(a)</h2>
+            <label for="email" class="text-[12px] text-slate-400 font-bold uppercase mb-1">Email</label>
+            <input name="email" type="email" placeholder="email@email.com" class="w-full h-[40px] border outline-none rounded pl-3 duration-200 mb-4 focus:outline-2 focus:outline-verde-claro focus:border-verde-claro" required />
+            <label for="senha" class="text-[12px] text-slate-400 font-bold uppercase mb-1">Senha</label>
+            <input name="senha" type="password" placeholder="********" class="w-full h-[40px] border outline-none rounded pl-3 duration-200 mb-4 focus:outline-2 focus:outline-verde-claro focus:border-verde-claro" required />
+            <a href="cadastro.html" class="text-[12px] text-center hover:text-verde-escuro duration-200 block mb-4">Não possui conta ainda?</a>
+            <button type="submit" class="w-full h-[40px] bg-verde-claro text-verde-escuro rounded font-bold uppercase text-[12px] duration-200 hover:bg-verde-escuro hover:text-verde-claro">Logar</button>
+        </form>
+    </div>
+</body>
+
+</html>
