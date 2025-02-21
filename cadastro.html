@@ -32,7 +32,7 @@
 
 <body>
     <div class="h-screen flex justify-center items-center">
-        <form class="w-[350px] border p-4 rounded-lg flex flex-col">
+        <form id="cadastro" onsubmit="cadastrarUsuario()" class="w-[350px] border p-4 rounded-lg flex flex-col">
             <div>
                 <img src="imgs/nutri-logo.png" alt="Nutri logo" class="h-[100px] m-auto">
             </div>
@@ -47,6 +47,7 @@
             <button type="submit" class="w-full h-[40px] bg-verde-claro text-verde-escuro rounded font-bold uppercase text-[12px] duration-200 hover:bg-verde-escuro hover:text-verde-claro">cadastrar</button>
         </form>
     </div>
+    <script src="js/cadastro.js"></script>
 </body>
 
 </html>
