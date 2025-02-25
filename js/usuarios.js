@@ -25,36 +25,11 @@ function ocultarSideBar() {
     modalBG.classList.add("-right-full");
 }
 
-// function adicionarUsuario() {
-//     event.preventDefault();
-//     let formulario = document.querySelector("#criar");
-//     let formData = new FormData(formulario);
-//     let data = {};
-//     for(const pair of formData.entries()){
-//         data[pair[0]] = pair[1]
-//     }
-//     fetch("http://localhost:8000/usuarios", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "multipart/form-data"
-//         },
-//         body: data
-//     })
-//     .then(resposta => resposta.json())
-//     .then(resposta => {
-//         dados = resposta
-//     });
-// }
-
 function adicionarUsuario(event) {
     event.preventDefault();
     let formulario = document.querySelector("#criar");
     let formData = new FormData(formulario);
-    let data = Object.fromEntries(formData.entries()); //converter um objeto FormData para um objeto // formData.entries() retorna um iterador contendo os pares chave-valor // Object.fromEntries() converte em um objeto
-    // let data = {};
-    // formData.forEach((value, key) => {  //converte em um objeto, pois náo pode ser diretametno transformado em JSON
-    //     data[key] = value;
-    // });
+    let data = Object.fromEntries(formData.entries());
     if(usuarios.find(usuario => usuario.email == data.email)){
         alert("Esté e-mail já está cadastrado");
         return;
