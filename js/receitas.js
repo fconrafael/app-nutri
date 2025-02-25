@@ -51,6 +51,10 @@ function adicionarReceita(event) {
     let formulario = document.querySelector("#criar");
     let formData = new FormData(formulario);
     let data = Object.fromEntries(formData.entries());
+    let inputs = document.querySelectorAll("#listaDeIngredientes input")
+    data.ingredientes = [];
+    inputs.forEach(input => data.ingredientes.push(input.value))
+    
     if(receitas.find(receita => receita.titulo == data.ingredientes)){
         alert("Receita já está cadastrado");
         return;
@@ -138,4 +142,21 @@ function deletarReceita(id){
         alert("Receita não deletada");
         return(listarReceitas());
     }
+}
+
+function adicionarIngrediente (){
+    let lista = document.querySelector("#listaDeIngredientes");
+    let indice = document.querySelectorAll("#listaDeIngredientes > div").length
+    let div = document.createElement("div")
+    div.setAttribute("id", `ingrediente${indice}`)
+    div.classList.add("flex", "gap-3")
+    div.innerHTML = `<input class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+    <box-icon name='x' onclick="removerIngrediente('#ingrediente${indice}')"></box-icon>` 
+
+    lista.append(div)
+}
+
+function removerIngrediente(id){
+    let div = document.querySelector(id)
+    div.remove()
 }

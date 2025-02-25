@@ -74,8 +74,14 @@
 
                 <label for="tituloReceita" class="text-[14px] font-bold block">Título:</label>
                 <input id="tituloReceita" name="tituloReceita" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <label for="ingredientes" class="text-[14px] font-bold block">Ingredientes:</label>
-                <textarea id="ingredientes" name="ingredientes" rows="7" class="w-full h-[150px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
+                <label for="ingredientes" class="text-[14px] font-bold flex justify-between">Ingredientes: <span onclick="adicionarIngrediente()">Adicionar Ingrediente</span></label>
+                <div id="listaDeIngredientes">
+                    <div class="flex gap-3">
+                        <input class="flex-1 h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                        <!-- <box-icon name='x'></box-icon> -->
+                    </div>
+                </div>
+                <!-- <textarea id="ingredientes" name="ingredientes" rows="7" class="w-full h-[150px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea> -->
                 <label for="modoPreparo" class="text-[14px] font-bold block">Modo preparo:</label>
                 <textarea id="modoPreparo" name="modoPreparo" rows="5" class="w-full h-[90px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
                 <label for="tempo" class="text-[14px] font-bold block">Tempo do modo preparo:</label>
