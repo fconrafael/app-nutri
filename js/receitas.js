@@ -116,18 +116,45 @@ function mostrarSideBarEditar(id) {
     modalBG.classList.remove("-right-full");
     modalBG.classList.add("right-0");
     let receita = receitas.find(receita => receita.id == id);
+
     let idValue = document.querySelector("#idEditar");
     let tituloValue = document.querySelector("#tituloReceitaEditar");
-    let ingredientesValue = document.querySelector("#ingredientesEditar");
+    let ingredientesValue = document.querySelector("#listaDeIngredientesEditar");
     let modoPreparoValue = document.querySelector("#modoPreparoEditar");
     let tempoValue = document.querySelector("#tempoEditar");
+
     idValue.value = receita.id;
     tituloValue.value = receita.tituloReceita;
-    ingredientesValue.value = receita.ingredientes;
     modoPreparoValue.value = receita.modoPreparo;
     tempoValue.value = receita.tempo;
-    mostrarOverlay()
-}
+
+    ingredientesValue.innerHTML = '';
+    receita.ingredientes.forEach(ingrediente => {
+        let div = document.createElement('div');
+        div.className = 'flex gap-3 mb-2';
+    
+        let input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'ingredienteEditar';
+        input.value = ingrediente;
+        input.className = 'w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px]';
+
+    
+        let botaoRemover = document.createElement('button');
+        botaoRemover.type = 'button';
+        botaoRemover.textContent = 'Remover';
+        botaoRemover.className = 'bg-red-500 text-white px-3 py-1 rounded';
+        botaoRemover.addEventListener('click', () => {
+            ingredientesValue.removeChild(div);
+        });
+    
+        div.appendChild(input);
+        div.appendChild(botaoRemover);
+        ingredientesValue.appendChild(div);
+    });
+    
+      mostrarOverlay();
+    }
 
 
 function deletarReceita(id){

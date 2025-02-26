@@ -103,13 +103,17 @@
                 <input type="hidden" name="id" id="idEditar">
                 <label for="tituloReceita" class="text-[14px] font-bold block">Título:</label>
                 <input id="tituloReceitaEditar" name="tituloReceita" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <label for="ingredientes" class="text-[14px] font-bold block">Ingredientes:</label>
-                <textarea id="ingredientesEditar" name="ingredientes" rows="4" class="w-full h-[60px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
+                <label for="ingredientes" class="text-[14px] font-bold flex justify-between">Ingredientes:</label>
+                <div id="listaDeIngredientesEditar">
+                    <div class="flex gap-3">
+
+                    </div>
+                </div>
                 <label for="modoPreparo" class="text-[14px] font-bold block">Modo preparo:</label>
-                <textarea id="modoPreparoEditar" name="modoPreparo" rows="4" class="w-full h-[50px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
+                <textarea id="modoPreparoEditar" name="modoPreparo" rows="5" class="w-full h-[90px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
                 <label for="tempo" class="text-[14px] font-bold block">Tempo do modo preparo:</label>
                 <input id="tempoEditar" name="tempo" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <button type="submit" class="w-full leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer">Editar</button>
+                <button type="submit" class="w-full leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer">Criar</button>
             </form>
         </div>
     </main>
