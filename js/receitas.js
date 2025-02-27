@@ -45,7 +45,6 @@ async function buscarReceitas(){
 }
 buscarReceitas()
 
-
 function adicionarReceita(event) {
     event.preventDefault();
     let formulario = document.querySelector("#criar");
@@ -93,11 +92,22 @@ function listarReceitas(receitas){
     })
 }
 
-
-function editarReceita(){
+function editarReceita(event) {
+    event.preventDefault();
+    
     let formulario = document.querySelector("#editar");
     let formData = new FormData(formulario);
     let data = Object.fromEntries(formData.entries());
+    data.id = Number(data.id);
+
+    let ingredientesValue = document.querySelector("#listaDeIngredientesEditar");
+    data.ingredientes = atualizarArrayIngredientes(ingredientesValue);
+
+    if (data.ingredientes.length === 0) {
+        alert("Por favor, adicione pelo menos um ingrediente.");
+        return;
+    }
+
     fetch(`http://localhost:8000/receitas/${data.id}`, {
         method: "PUT",
         headers: {
@@ -106,10 +116,16 @@ function editarReceita(){
         body: JSON.stringify(data)
     })
     .then(resposta => resposta.json())
-    .then(resposta => {console.log(resposta);
+    .then(resposta => {
+        console.log("Receita atualizada com sucesso:", resposta);
+        ocultarOverlay(); 
+        listarReceitas(receitas);
+    })
+    .catch(error => {
+        console.error("Erro ao atualizar receita:", error);
     });
-
 }
+
 
 function mostrarSideBarEditar(id) {
     let modalBG = document.querySelector("#sidebarEditar");
@@ -139,13 +155,14 @@ function mostrarSideBarEditar(id) {
         input.value = ingrediente;
         input.className = 'w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px]';
 
-    
         let botaoRemover = document.createElement('button');
         botaoRemover.type = 'button';
-        botaoRemover.textContent = 'Remover';
+        botaoRemover.textContent = 'x';
         botaoRemover.className = 'bg-red-500 text-white px-3 py-1 rounded';
         botaoRemover.addEventListener('click', () => {
             ingredientesValue.removeChild(div);
+            let ingredientesAtualizados = atualizarArrayIngredientes(ingredientesValue);
+            atualizarReceita(id, ingredientesAtualizados);
         });
     
         div.appendChild(input);
@@ -153,8 +170,38 @@ function mostrarSideBarEditar(id) {
         ingredientesValue.appendChild(div);
     });
     
-      mostrarOverlay();
-    }
+    mostrarOverlay();
+}
+
+
+function atualizarArrayIngredientes(ingredientesValue) {
+    let ingredientes = Array.from(ingredientesValue.querySelectorAll('input'))
+                             .map(input => input.value.trim())
+                             .filter(value => value !== ""); 
+    return ingredientes;
+}
+
+function atualizarReceita(id, ingredientesAtualizados) {
+    let receita = receitas.find(receita => receita.id == id);
+    
+    receita.ingredientes = ingredientesAtualizados;
+
+    fetch(`http://localhost:8000/receitas/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(receita)
+    })
+    .then(resposta => resposta.json())
+    .then(resposta => {
+        console.log("Receita atualizada com sucesso:", resposta);
+        listarReceitas(receitas);
+    })
+    .catch(error => {
+        console.error("Erro ao atualizar receita:", error);
+    });
+}
 
 
 function deletarReceita(id){
@@ -182,6 +229,19 @@ function adicionarIngrediente (){
 
     lista.append(div)
 }
+
+function adicionarIngredienteEditar (){
+    let lista = document.querySelector("#listaDeIngredientesEditar");
+    let indice = document.querySelectorAll("#listaDeIngredientesEditar > div").length
+    let div = document.createElement("div")
+    div.setAttribute("id", `ingrediente${indice}`)
+    div.classList.add("flex", "gap-3")
+    div.innerHTML = `<input class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+    <box-icon name='x' onclick="removerIngrediente('#ingrediente${indice}')"></box-icon>` 
+
+    lista.append(div)
+}
+
 
 function removerIngrediente(id){
     let div = document.querySelector(id)

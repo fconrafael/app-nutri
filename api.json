@@ -37,29 +37,35 @@
   ],
   "receitas": [
     {
-      "id": 2,
-      "tituloReceita": "Bolo de milho",
-      "ingredientes": "1 lata de milho (sem o líquido);\n1 lata de leite (medida da lata de milho);\n1 lata de açúcar (medida da lata de milho);\n1 lata de flocão de milho;\n1/2 lata de óleo de soja;\n3 ovos inteiros;\n1 colher (sopa) de fermento em pó\nmargarina para untar farinha de trigo para untar;",
-      "modoPreparo": "1. Escorra o milho e use a própria lata para as medidas;\n2. Unte e enfarinhe uma forma de bolo com furo;\n3. Preaqueça o forno;\n4. Coloque no liquidificador o milho (já escorrido), o leite, açúcar, flocão de milho, óleo, ovos e bata bem até que o milho fique bem moído;\n5. Se quiser, pode acrescentar duas colheres de sopa de coco ralado;\n6. Acrescente o fermento em pó e pulse o liquidificador 3 vezes;\n7. Despeje essa massa na forma e leve ao forno médio;",
-      "tempo": "40 minutos"
-    },
-    {
-      "id": 3,
-      "tituloReceita": "Torto de limão",
-      "ingredientes": "150 g de margarina\n1 lata de leite condensado (395 g)",
-      "modoPreparo": "Triture o biscoito de maisena em um liquidificador ou processador.",
-      "tempo": "40 min"
-    },
-    {
-      "tituloReceita": "Bolo fitness",
-      "modoPreparo": "misturar os ingredientes ",
-      "tempo": "40 minutos",
+      "tituloReceita": "Bolo fofo",
+      "modoPreparo": "misturar tudo e colocar no forno",
+      "tempo": "40 minutos ",
       "ingredientes": [
         "3 ovos",
-        "xicara de açúcar ",
-        "200ml de leite"
+        "manteiga"
       ],
-      "id": 4
+      "id": 5
+    },
+    {
+      "tituloReceita": "Pudim de leite condensado",
+      "modoPreparo": "Primeiro, bata bem os ovos no liquidificador.",
+      "tempo": "45 min",
+      "ingredientes": [],
+      "id": 6
+    },
+    {
+      "tituloReceita": "Brigadeirão",
+      "modoPreparo": "Bata o leite condensado, o leite de vaca, a manteiga, o chocolate em pó e os ovos no liquidificador.",
+      "tempo": "1h",
+      "ingredientes": [
+        "2 latas de leite condensado",
+        "1 colher de manteiga",
+        "4 ovos",
+        "1 lata de leite de vaca (use a lata de leite condensado como medida)",
+        "200 g de chocolate em pó",
+        "açúcar suficiente para polvilhar a forma"
+      ],
+      "id": 7
     }
   ]
 }
