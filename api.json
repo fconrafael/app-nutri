@@ -20,29 +20,9 @@
       "email": "carlos.alves@gmail.com"
     },
     {
-      "id": 4,
-      "nome": "Renata",
-      "email": "renata@gmail.com"
-    },
-    {
       "id": 5,
       "nome": "Rauan",
       "email": "rauan@gmail.com"
-    },
-    {
-      "id": 11,
-      "nome": "Teste 20",
-      "email": "teste@gmail.com"
-    },
-    {
-      "nome": "fs32",
-      "email": "teste@gmail.com",
-      "id": 12
-    },
-    {
-      "nome": "teste",
-      "email": "rafael@hotmail.com",
-      "id": 13
     },
     {
       "nome": "Rafael",
@@ -57,5 +37,37 @@
       "id": 15
     }
   ],
-  "receitas": []
+  "receitas": [
+    {
+      "tituloReceita": "Bolo fofo",
+      "modoPreparo": "misturar tudo e colocar no forno",
+      "tempo": "40 minutos ",
+      "ingredientes": [
+        "3 ovos",
+        "manteiga"
+      ],
+      "id": 5
+    },
+    {
+      "tituloReceita": "Pudim de leite condensado",
+      "modoPreparo": "Primeiro, bata bem os ovos no liquidificador.",
+      "tempo": "45 min",
+      "ingredientes": [],
+      "id": 6
+    },
+    {
+      "tituloReceita": "Brigadeirão",
+      "modoPreparo": "Bata o leite condensado, o leite de vaca, a manteiga, o chocolate em pó e os ovos no liquidificador.",
+      "tempo": "1h",
+      "ingredientes": [
+        "2 latas de leite condensado",
+        "1 colher de manteiga",
+        "4 ovos",
+        "1 lata de leite de vaca (use a lata de leite condensado como medida)",
+        "200 g de chocolate em pó",
+        "açúcar suficiente para polvilhar a forma"
+      ],
+      "id": 7
+    }
+  ]
 }

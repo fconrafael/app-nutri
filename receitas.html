@@ -43,29 +43,28 @@
     <main class="h-screen flex-1 overflow-auto">
         <div class="border rounded-[10px] p-4">
             <h3 class="flex justify-between">
-                <span class="text-[24px] text-verde-escuro font-bold">Usuários</span>
+                <span class="text-[24px] text-verde-escuro font-bold">Receitas</span>
                 <button
                     onclick="mostrarSideBar()"
                     class="leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer">
-                    Novo usuário</button>
+                    Nova receita</button>
             </h3>
             <table class="w-full mt-4">
                 <thead class="*:text-[10px] *:uppercase *:leading-[40px] *:text-verde-escuro bg-verde-claro ">
-                    <th class="w-[50px] px-2">id</th>
-                    <th class="w-[250px] px-2">nome</th>
-                    <th class="w-auto px-2">email</th>
-                    <th class="w-[100px] px-2">ações</th>
+                    <th class="w-[50px] px-2">Título</th>
+                    <th class="w-[250px] px-2">Ingredientes</th>
+                    <th class="w-auto px-2">Modo preparo</th>
+                    <th class="w-[100px] px-2">Ações</th>
                 </thead>
-                <tbody id="usuarios" class="*:text-[10px] *:uppercase *:leading-[40px]"></tbody>
+                <tbody id="receitas" class="*:text-[10px] *:uppercase *:leading-[20px]"></tbody>
             </table>
         </div>
 
-
         <div id="overlay" class="w-full h-screen bg-black/80 fixed top-0 left-0 z-50 duration-200 invisible opacity-0" onclick="ocultarOverlay()"></div>
         <div id="sidebar" class="w-[350px] h-screen bg-white p-[20px] fixed top-0 -right-full z-[51] duration-200">
-            <form onsubmit="adicionarUsuario(event)" id="criar">
+            <form onsubmit="adicionarReceita(event)" id="criar">
                 <h3 class="flex justify-between">
-                    <span class="text-[24px] text-verde-escuro font-bold">Cadastrar</span>
+                    <span class="text-[24px] text-verde-escuro font-bold">Cadastrar Receita</span>
                     <button
                     type="button"
                         class="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-verde-claro text-[14px] font-bold duration-200 hover:bg-verde-escuro cursor-pointer group">
@@ -73,36 +72,53 @@
                     </button>
                 </h3>
 
-                <label for="nome" class="text-[14px] font-bold block">Nome</label>
-                <input id="nome" name="nome" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <label for="email" class="text-[14px] font-bold block">Email</label>
-                <input id="email" name="email" type="email" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <button type="submit" class="w-full leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer"">Criar</button>
+                <label for="tituloReceita" class="text-[14px] font-bold block">Título:</label>
+                <input id="tituloReceita" name="tituloReceita" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                <label for="ingredientes" class="text-[14px] font-bold flex justify-between">Ingredientes: <span onclick="adicionarIngrediente()">Adicionar Ingrediente</span></label>
+                <div id="listaDeIngredientes">
+                    <div class="flex gap-3">
+                        <input class="flex-1 h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                        <!-- <box-icon name='x'></box-icon> -->
+                    </div>
+                </div>
+                <!-- <textarea id="ingredientes" name="ingredientes" rows="7" class="w-full h-[150px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea> -->
+                <label for="modoPreparo" class="text-[14px] font-bold block">Modo preparo:</label>
+                <textarea id="modoPreparo" name="modoPreparo" rows="5" class="w-full h-[90px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
+                <label for="tempo" class="text-[14px] font-bold block">Tempo do modo preparo:</label>
+                <input id="tempo" name="tempo" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                <button type="submit" class="w-full leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer">Criar</button>
             </form>
         </div>
 
         <div id="sidebarEditar" class="w-[350px] h-screen bg-white p-[20px] fixed top-0 -right-full z-[51] duration-200">
-            <form onsubmit="editarUsuario()" id="editar">
+            <form onsubmit="editarReceita()" id="editar">
                 <h3 class="flex justify-between">
-                    <span class="text-[24px] text-verde-escuro font-bold">Editar</span>
+                    <span class="text-[24px] text-verde-escuro font-bold">Editar Receita</span>
                     <button
                     type="button"
                         class="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-verde-claro text-[14px] font-bold duration-200 hover:bg-verde-escuro cursor-pointer group">
                         <box-icon name='x' class="fill-verde-escuro group-hover:fill-verde-claro" onclick="ocultarOverlay()"></box-icon>
                     </button>
                 </h3>
-                <input type="hidden" name="id" id="idEditar" >
-                <label for="nome" class="text-[14px] font-bold block">Nome</label>
-                <input id="nomeEditar" name="nome" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
-                <label for="email" class="text-[14px] font-bold block">Email</label>
-                <input id="emailEditar" name="email" type="email" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                <input type="hidden" name="id" id="idEditar">
+                <label for="tituloReceita" class="text-[14px] font-bold block">Título:</label>
+                <input id="tituloReceitaEditar" name="tituloReceita" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
+                <label for="ingredientes" class="text-[14px] font-bold flex justify-between">Ingredientes: <span onclick="adicionarIngredienteEditar()">Adicionar Ingrediente</span></label>
+                <div id="listaDeIngredientesEditar">
+
+                </div>
+
+                <label for="modoPreparo" class="text-[14px] font-bold block">Modo preparo:</label>
+                <textarea id="modoPreparoEditar" name="modoPreparo" rows="5" class="w-full h-[90px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4"></textarea>
+                <label for="tempo" class="text-[14px] font-bold block">Tempo do modo preparo:</label>
+                <input id="tempoEditar" name="tempo" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
                 <button type="submit" class="w-full leading-[40px] px-[20px] rounded-[5px] bg-verde-claro text-[14px] text-verde-escuro font-bold duration-200 hover:bg-verde-escuro hover:text-verde-claro cursor-pointer">Editar</button>
             </form>
         </div>
-
     </main>
 
-    <script src="js/index.js"></script>
+    <script src="js/receitas.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>
