@@ -53,7 +53,7 @@
                 <thead class="*:text-[10px] *:uppercase *:leading-[40px] *:text-verde-escuro bg-verde-claro ">
                     <th class="w-[50px] px-2">Título</th>
                     <th class="w-[250px] px-2">Ingredientes</th>
-                    <th class="w-auto px-2">Modo preparo</th>
+                    <th class="w-[100px] px-2">Tempo</th>
                     <th class="w-[100px] px-2">Ações</th>
                 </thead>
                 <tbody id="receitas" class="*:text-[10px] *:uppercase *:leading-[20px]"></tbody>
@@ -100,7 +100,7 @@
                         <box-icon name='x' class="fill-verde-escuro group-hover:fill-verde-claro" onclick="ocultarOverlay()"></box-icon>
                     </button>
                 </h3>
-                <input type="hidden" name="id" id="idEditar">
+                <input type="hidden" name="id" id="id">
                 <label for="tituloReceita" class="text-[14px] font-bold block">Título:</label>
                 <input id="tituloReceitaEditar" name="tituloReceita" type="text" class="w-full h-[40px] rounded-[6px] border-2 border-stone-300 pl-[10px] mb-4">
                 <label for="ingredientes" class="text-[14px] font-bold flex justify-between">Ingredientes: <span onclick="adicionarIngredienteEditar()">Adicionar Ingrediente</span></label>

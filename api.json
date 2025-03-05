@@ -4,13 +4,15 @@
       "id": 1,
       "nome": "Rafael Xavier",
       "email": "rafael@gmail.com",
-      "senha": "123456"
+      "senha": "123456",
+      "nivel": "admin"
     },
     {
       "id": 2,
       "nome": "Gleidson",
-      "email": "Gleidson@gmail.com",
-      "senha": "123456"
+      "email": "gleidson@gmail.com",
+      "senha": "123456",
+      "nivel": "cliente"
     },
     {
       "id": 3,
@@ -37,21 +39,24 @@
   ],
   "receitas": [
     {
-      "tituloReceita": "Bolo fofo",
+      "id": 5,
+      "tituloReceita": "Bolo fofo fitness",
       "modoPreparo": "misturar tudo e colocar no forno",
-      "tempo": "40 minutos ",
+      "tempo": "1 hora",
       "ingredientes": [
-        "3 ovos",
-        "manteiga"
-      ],
-      "id": 5
+        "3 ovos"
+      ]
     },
     {
+      "id": 6,
       "tituloReceita": "Pudim de leite condensado",
       "modoPreparo": "Primeiro, bata bem os ovos no liquidificador.",
       "tempo": "45 min",
-      "ingredientes": [],
-      "id": 6
+      "ingredientes": [
+        "2 leite condesado",
+        "500 ml de leite",
+        "200g de farinha"
+      ]
     },
     {
       "tituloReceita": "Brigadeirão",

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Nutri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "verde-clarinho": '#D5FFEA',
+                        "verde-claro": '#85CFAA',
+                        "verde-escuro": '#41745A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Montserrat", serif;
+        }
+    </style>
+</head>
+
+<body class="p-[20px] flex gap-[26px] items-start">
+    <header class="w-[230px] bg-verde-clarinho p-4 rounded-[10px]">
+        <img src="imgs/nutri-logo.png" alt="Logo Nutri">
+        <nav class="*:block *:leading-[38px] *:px-[10px] *:rounded-[6px] *:text-verde-escuro *:text-[14px]">
+            <a href="cliente.html">Dashboard</a>
+            <a href="cardapio.html" class="bg-verde-claro font-bold">Cardápio</a>
+            <a href="cronograma.html">Treinos</a>
+        </nav>
+    </header>
+
+    <main class="h-screen flex-1 overflow-auto">
+        <div class="border rounded-[10px] p-4">
+            <h3 class="flex justify-between">
+                <span class="text-[24px] text-verde-escuro font-bold">Cardápio</span>
+            </h3>
+
+            <div class="grid grid-cols-4 gap-4 mt-6">
+                <div class="border rounded p-2 hover:border-verde-claro duration-200" onclick="mostrarDetalhes()">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaBLUjDLbx1zaSLrcEckFEonAyADG6W6Dvg&s"
+                        alt="Lasanha Fit" class="rounded">
+                    <h3 class="font-bold text-verde-escuro mt-3">Nome da receita</h3>
+                    <h4 class="text-[12px] font-bold">Categoria</h4>
+                </div>
+                <div class="border rounded p-2 hover:border-verde-claro duration-200" onclick="mostrarDetalhes()">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaBLUjDLbx1zaSLrcEckFEonAyADG6W6Dvg&s"
+                        alt="Lasanha Fit" class="rounded">
+                    <h3 class="font-bold text-verde-escuro mt-3">Nome da receita</h3>
+                    <h4 class="text-[12px] font-bold">Categoria</h4>
+                </div>
+                <div class="border rounded p-2 hover:border-verde-claro duration-200" onclick="mostrarDetalhes()">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaBLUjDLbx1zaSLrcEckFEonAyADG6W6Dvg&s"
+                        alt="Lasanha Fit" class="rounded">
+                    <h3 class="font-bold text-verde-escuro mt-3">Nome da receita</h3>
+                    <h4 class="text-[12px] font-bold">Categoria</h4>
+                </div>
+                <div class="border rounded p-2 hover:border-verde-claro duration-200" onclick="mostrarDetalhes()">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgaBLUjDLbx1zaSLrcEckFEonAyADG6W6Dvg&s"
+                        alt="Lasanha Fit" class="rounded">
+                    <h3 class="font-bold text-verde-escuro mt-3">Nome da receita</h3>
+                    <h4 class="text-[12px] font-bold">Categoria</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="overlay" class="w-full h-screen bg-black/80 fixed top-0 left-0 z-50 duration-200 invisible opacity-0"
+        onclick="ocultarOverlay()"></div>
+    <div id="sidebar" class="w-[350px] h-screen bg-white p-[20px] fixed top-0 -right-full z-[51] duration-200">
+
+    </div>
+
+    <script src="js/cardapio.js"></script>
+</body>
+
+</html>
