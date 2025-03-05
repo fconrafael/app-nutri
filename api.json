@@ -4,13 +4,15 @@
       "id": 1,
       "nome": "Rafael Xavier",
       "email": "rafael@gmail.com",
-      "senha": "123456"
+      "senha": "123456",
+      "nivel": "admin"
     },
     {
       "id": 2,
       "nome": "Gleidson",
-      "email": "Gleidson@gmail.com",
-      "senha": "123456"
+      "email": "gleidson@gmail.com",
+      "senha": "123456",
+      "nivel": "cliente"
     },
     {
       "id": 3,
